@@ -22,8 +22,9 @@ samples, guidance on mobile development, and a full API reference.
 ## TODOs
 
 - [x] 账号登录
-- [ ] 登录页面
-- [ ] 数据概览页面
+- [x] 登录页面
+- [x] 数据概览页面
+- [ ] 数据调试
 - [ ] 作品数据页面
 
 
