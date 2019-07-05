@@ -1,6 +1,10 @@
-# Flutter Tencent Musician
+# Flutter Tencent Musician | 腾讯音乐人 - 由爱好者构建
 
-An unofficial app for tencent musician using flutter
+> An unofficial app for tencent musician using Flutter | 用Flutter实现的腾讯音乐人后台App
+
+<p align="center">
+<img src="./HomePage.jpg" width="375" style="border-radius: 15px" />
+</p>
 
 ## Getting Started
 
