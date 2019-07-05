@@ -34,6 +34,17 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
             IndexNumberCard(),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Expanded(
+                  child: MusicInfoCard(),
+                ),
+                Expanded(
+                  child: Container(),
+                ),
+              ],
+            ),
           ],
         ));
   }
@@ -65,7 +76,7 @@ class UserInfoCard extends StatelessWidget {
               child: CircleAvatar(
                 backgroundImage: NetworkImage(
                     'https://y.gtimg.cn/music/photo_new/T025R500x500M002000OoLnd3gaeKB.png'),
-                radius: 50,
+                radius: 45,
                 backgroundColor: Colors.white,
               ),
             ),
@@ -93,6 +104,7 @@ class BaseInfoCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Text('昨日播放量', style: TextStyle(color: Colors.white, fontSize: 14)),
+            Container(height: 10),
             Text(
               '518',
               style: TextStyle(color: Colors.white, fontSize: 34),
@@ -100,13 +112,15 @@ class BaseInfoCard extends StatelessWidget {
             Container(
               color: Colors.white10,
               height: 1,
-              margin: EdgeInsets.fromLTRB(0, 10, 0, 10),
+              margin: EdgeInsets.fromLTRB(0, 11, 0, 11),
             ),
             Text('总播放量', style: TextStyle(color: Colors.white, fontSize: 14)),
+            Container(height: 10),
             Text(
               '35,683',
               style: TextStyle(color: Colors.white, fontSize: 34),
             ),
+            Container(height: 5),
           ],
         ));
   }
@@ -133,16 +147,47 @@ class IndexNumberCard extends StatelessWidget {
               child: Text('昨日音乐人指数',
                   style: TextStyle(color: Colors.black87, fontSize: 14)),
             ),
-            Padding(
-              padding: EdgeInsets.all(13),
-              child: CircleAvatar(
-                backgroundImage: NetworkImage(
-                    'https://y.gtimg.cn/music/photo_new/T025R500x500M002000OoLnd3gaeKB.png'),
-                radius: 50,
-                backgroundColor: Colors.white,
-              ),
+            LineChartSample2()
+          ],
+        ));
+  }
+}
+
+class MusicInfoCard extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        margin: EdgeInsets.all(10),
+        padding: EdgeInsets.all(15),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(15),
+          boxShadow: [
+            BoxShadow(
+                offset: Offset(0, 1), color: Colors.black12, blurRadius: 18)
+          ],
+          color: Colors.white,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Text('专辑', style: TextStyle(color: Colors.black87, fontSize: 14)),
+            Container(height: 10),
+            Text(
+              '5',
+              style: TextStyle(color: Colors.black, fontSize: 34),
             ),
-            Text('黄祺', style: TextStyle(color: Colors.black, fontSize: 24)),
+            Container(
+              color: Colors.black12,
+              height: 1,
+              margin: EdgeInsets.fromLTRB(0, 11, 0, 11),
+            ),
+            Text('歌曲', style: TextStyle(color: Colors.black87, fontSize: 14)),
+            Container(height: 10),
+            Text(
+              '10',
+              style: TextStyle(color: Colors.black, fontSize: 34),
+            ),
+            Container(height: 5),
           ],
         ));
   }

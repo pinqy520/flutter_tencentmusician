@@ -11,9 +11,6 @@ class LineChartSample2 extends StatelessWidget {
     return AspectRatio(
       aspectRatio: 1.70,
       child: Container(
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(18)),
-            color: Color(0xff232d37)),
         child: Padding(
           padding: const EdgeInsets.only(
               right: 18.0, left: 12.0, top: 24, bottom: 12),
