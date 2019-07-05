@@ -6,18 +6,17 @@
 <img src="./HomePage.jpg" width="300" style="border-radius: 15px" />
 </p>
 
-## Getting Started
+## 前言
 
-This project is a starting point for a Flutter application.
+我是黄祺，作为一名独立音乐人时不时的会上后台查看一下昨天的播放数据，但是腾讯音乐人的网站每次都得在电脑上登录太麻烦了，所以就萌生了要做一个App版的年头。前期调研了下模拟登录的可行性，发现没什么大问题，就开始做了。使用Flutter构建这个跨平台的App。
 
-A few resources to get you started if this is your first Flutter project:
+设计也是我独立完成的，有什么问题请提ISSUE，欢迎PR。
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+最后，希望大家能关注和喜欢我的音乐，谢谢～ 👉 [独立音乐人黄祺]()
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+## 下载安装
+
+> TODO: 即将上线，敬请期待
 
 ## TODOs
 
@@ -26,7 +25,6 @@ samples, guidance on mobile development, and a full API reference.
 - [x] 数据概览页面
 - [ ] 数据调试
 - [ ] 作品数据页面
-
 
 ## 备注
 
