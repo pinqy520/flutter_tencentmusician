@@ -1,6 +1,6 @@
 # Flutter Tencent Musician | 腾讯音乐人 - 由爱好者构建
 
-> An unofficial app for tencent musician using Flutter | 用Flutter实现的腾讯音乐人后台App
+> An unofficial app for tencent musician using Flutter | 用Flutter实现的腾讯音乐人数据后台App
 
 <p align="center">
 <img src="./HomePage.jpg" width="300" style="border-radius: 15px" />
@@ -8,7 +8,7 @@
 
 ## 前言
 
-我是黄祺，作为一名独立音乐人时不时的会上后台查看一下昨天的播放数据，但是腾讯音乐人的网站每次都得在电脑上登录太麻烦了，所以就萌生了要做一个App版的年头。前期调研了下模拟登录的可行性，发现没什么大问题，就开始做了。使用Flutter构建这个跨平台的App。
+我是黄祺，作为一名独立音乐人时不时的会上后台查看一下昨天的播放数据，但是腾讯音乐人的网站每次都得在电脑上登录太麻烦了，所以就萌生了要做一个App版的念头。前期调研了下模拟登录的可行性，发现没什么大问题，就开始做了。使用Flutter构建这个跨平台的App。
 
 设计也是我独立完成的，有什么问题请提ISSUE，欢迎PR。
 
