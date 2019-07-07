@@ -1,6 +1,4 @@
-import 'dart:convert';
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_tencentmusician/api.dart';
 import 'package:flutter_tencentmusician/home.dart';
@@ -43,6 +41,8 @@ class _LoginPageState extends State<LoginPage> {
         login();
       }
     });
+    // Navigator.pushReplacement(
+    //     context, MaterialPageRoute(builder: (context) => HomePage()));
   }
 
   @override

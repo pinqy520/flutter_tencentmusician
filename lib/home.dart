@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tencentmusician/api.dart';
-import 'package:flutter_tencentmusician/chart-test.dart';
+import 'package:flutter_tencentmusician/index-chart.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key}) : super(key: key);
@@ -19,8 +19,13 @@ class _HomePageState extends State<HomePage> {
   }
 
   void _init() async {
-    await API().getUserIndexInfo();
-    await API().playnum();
+    await Future.wait([
+      API().getUserSongInfo(),
+      API().playnum(),
+      API().getUserAlbuminfo(),
+      API().getIndexData(),
+      API().getUserIndex()
+    ]);
     setState(() {});
   }
 
@@ -38,12 +43,7 @@ class _HomePageState extends State<HomePage> {
             height: 110,
             child: ListView(
               scrollDirection: Axis.horizontal,
-              children: <Widget>[
-                MusicItem(),
-                MusicItem(),
-                MusicItem(),
-                MusicItem()
-              ],
+              children: List.from(API().data.albums.map(musicItem)),
             ),
           ),
           Row(
@@ -179,7 +179,25 @@ class IndexNumberCard extends StatelessWidget {
               child: Text('昨日音乐人指数',
                   style: TextStyle(color: Colors.black87, fontSize: 14)),
             ),
-            LineChartSample2()
+            Stack(
+              children: <Widget>[
+                Padding(
+                  padding: EdgeInsets.all(10),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text('${API().data.yesterdayIndex} ',
+                          style: TextStyle(
+                              fontSize: 34, fontWeight: FontWeight.bold)),
+                      Text('平均 ${API().data.index}',
+                          style: TextStyle(fontSize: 12, color: Colors.black54))
+                    ],
+                  ),
+                ),
+                IndexChart()
+              ],
+            )
           ],
         ));
   }
@@ -225,23 +243,18 @@ class MusicInfoCard extends StatelessWidget {
   }
 }
 
-class MusicItem extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 90,
-      height: 90,
-      margin: EdgeInsets.all(10),
-      decoration: BoxDecoration(
-        image: DecorationImage(
-            image: NetworkImage(
-                'https://y.gtimg.cn/music/photo_new/T002R800x800M000003unAKZ3lUzea.jpg?max_age=2592000')),
-        borderRadius: BorderRadius.circular(15),
-        boxShadow: [
-          BoxShadow(offset: Offset(0, 1), color: Colors.black12, blurRadius: 5)
-        ],
-        color: Colors.white,
-      ),
-    );
-  }
+Widget musicItem(AlbumData data) {
+  return Container(
+    width: 90,
+    height: 90,
+    margin: EdgeInsets.all(10),
+    decoration: BoxDecoration(
+      image: DecorationImage(image: NetworkImage(data.cover)),
+      borderRadius: BorderRadius.circular(15),
+      boxShadow: [
+        BoxShadow(offset: Offset(0, 1), color: Colors.black12, blurRadius: 5)
+      ],
+      color: Colors.white,
+    ),
+  );
 }
