@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_tencentmusician/api.dart';
 import 'package:flutter_tencentmusician/home.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 const LOGIN_URL =
     'https://ui.ptlogin2.qq.com/cgi-bin/login?pt_no_auth=1&pt_wxtest=1&pt_no_onekey=0&appid=1600001280&daid=656&style=9&hln_css=https://y.gtimg.cn/music/tmejs/other/loginlogo.png&s_url=https%3A%2F%2Fy.tencentmusic.com%2Flogin_close.html';
@@ -20,16 +21,33 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final flutterWebViewPlugin = FlutterWebviewPlugin();
   final client = new HttpClient();
+  final storage = new FlutterSecureStorage();
 
-  void login() async {
-    final String cookies =
-        await flutterWebViewPlugin.getAllCookies(LOGIN_DONE_URL);
+  @override
+  void initState() {
+    super.initState();
+    this.auth();
+  }
+
+  void auth() {
+    storage.read(key: 'cookies').then(login);
+  }
+
+  void login(String cookies) async {
     API().setCookies(cookies);
-    await API().getUserHeadInfo();
+    print(cookies);
+    try {
+      await API().getUserHeadInfo();
+    } catch (e, r) {
+      print(e);
+    }
     flutterWebViewPlugin.close();
-    flutterWebViewPlugin.dispose();
-    Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => HomePage()));
+    if (API().isLogin) {
+      storage.write(key: 'cookies', value: cookies);
+      flutterWebViewPlugin.dispose();
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) => HomePage()));
+    } else {}
   }
 
   void toLogin() {
@@ -38,7 +56,7 @@ class _LoginPageState extends State<LoginPage> {
       // print('onStateChanged: ${state.type} ${state.url}');
       if (state.type == WebViewState.finishLoad &&
           state.url.startsWith(LOGIN_DONE_URL)) {
-        login();
+        flutterWebViewPlugin.getAllCookies(LOGIN_DONE_URL).then(login);
       }
     });
     // Navigator.pushReplacement(

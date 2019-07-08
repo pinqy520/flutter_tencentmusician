@@ -6,8 +6,9 @@ class API {
   static final API _api = new API._internal();
 
   final client = new HttpClient();
-  final Completer<String> _cookies = Completer<String>();
+  String _cookies = '';
   TMData data = TMData();
+  bool isLogin = false;
 
   factory API() {
     return _api;
@@ -15,24 +16,27 @@ class API {
   API._internal();
 
   void setCookies(String cookies) {
-    _cookies.complete(cookies);
+    _cookies = cookies;
   }
 
   Future<dynamic> get(String path) async {
-    final String cookies = await _cookies.future;
     final HttpClientRequest request =
         await client.get('y.tencentmusic.com', 80, path);
-    request.headers.add(HttpHeaders.cookieHeader, cookies);
+    request.headers.add(HttpHeaders.cookieHeader, _cookies);
     final HttpClientResponse response = await request.close();
     final String result = await response.transform(utf8.decoder).join();
     Map<String, dynamic> json = jsonDecode(result);
-    return json['data'];
+    final String code = json['code'];
+    if (code == '0') return json['data'];
+    if (code == '040003') isLogin = false;
+    throw Exception('bad request with code: $code and message: ${json['msg']}');
   }
 
   Future<void> getUserHeadInfo() async {
     final info = await get('/v2/v2/user/getUserHeadInfo');
     data.name = info['name'];
     data.avatar = 'https:' + info['pic'];
+    isLogin = true;
   }
 
   Future<void> getUserSongInfo() async {
