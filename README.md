@@ -15,6 +15,7 @@
 ## 下载安装
 
 - Android v1.0.0 - [APK](https://github.com/pinqy520/flutter_tencentmusician/releases/download/v1.0.0/tencentmusician-v1.apk)
+- iOS v1.0.0 - TestFlight正在发布
 
 
 
