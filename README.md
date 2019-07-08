@@ -14,7 +14,9 @@
 
 ## 下载安装
 
-> TODO: 即将上线，敬请期待
+- Android v1.0.0 - [APK](https://github.com/pinqy520/flutter_tencentmusician/releases/download/v1.0.0/tencentmusician-v1.apk)
+
+
 
 ## TODOs
 
