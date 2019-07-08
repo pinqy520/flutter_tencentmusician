@@ -3,7 +3,7 @@
 > An unofficial app for tencent musician using Flutter | 用Flutter实现的腾讯音乐人数据后台App
 
 <p align="center">
-<img src="./HomePage.jpg" width="300" style="border-radius: 15px" />
+<img src="./Screens.jpg" width="640" />
 </p>
 
 ## 前言

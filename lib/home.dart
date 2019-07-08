@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_tencentmusician/about.dart';
 import 'package:flutter_tencentmusician/api.dart';
 import 'package:flutter_tencentmusician/index-chart.dart';
 
@@ -72,10 +73,13 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        tooltip: 'Increment',
+        onPressed: () {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => AboutPage()));
+        },
+        tooltip: '关于此应用',
         backgroundColor: Colors.black87,
-        child: Icon(Icons.music_note),
+        child: Icon(Icons.lightbulb_outline),
       ),
     );
   }
